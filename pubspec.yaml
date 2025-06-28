@@ -32,7 +32,9 @@ dependencies:
   flutter:
     sdk: flutter
   svg_flutter: ^0.0.1
-
+  flutter_localizations:
+    sdk: flutter
+  dots_indicator: ^4.0.1
 dev_dependencies:
   flutter_launcher_icons: ^0.14.4
   # The "flutter_lints" package below contains a set of recommended lints to
@@ -88,4 +90,6 @@ flutter_assets:
   assets_path: assets/images/
   output_path: lib/core/utils
   filename: assets.dart
-  field_prefix:
+  field_prefix: null
+flutter_intl:
+  enabled: true
