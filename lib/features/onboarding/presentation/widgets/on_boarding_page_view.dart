@@ -1,4 +1,6 @@
 import 'package:flutter/material.dart';
+import 'package:fruits_hub/core/utils/app_colors.dart';
+import 'package:fruits_hub/core/utils/app_text_styles.dart';
 import 'package:fruits_hub/core/utils/assets.dart';
 import 'package:fruits_hub/features/onboarding/presentation/widgets/page_view_item.dart';
 
@@ -11,23 +13,29 @@ class OnBoardingPageView extends StatelessWidget {
       controller: pageController,
       children: [
         PageViewItem(
-          isVisible:
-              (pageController.hasClients ? pageController.page!.round() : 0) ==
-                  0,
+          isVisible: true,
           subtitle:
               'اكتشف تجربة تسوق فريدة مع FruitHUB. استكشف مجموعتنا الواسعة من الفواكه الطازجة الممتازة واحصل على أفضل العروض والجودة العالية.',
           image: Assets.imagesPageView1Image,
           backgroundgImage: Assets.imagesPageview1backgroubdimage,
           title: Row(
             mainAxisAlignment: MainAxisAlignment.center,
-            children: [Text('مرحبًا بك في'), Text('Fruit'), Text('HUB')],
+            children: [
+              const Text(
+                'مرحبًا بك في',
+                style: TextStyles.bold23,
+              ),
+              Text('  HUB',
+                  style: TextStyles.bold23
+                      .copyWith(color: AppColors.secondaryColor)),
+              Text('Fruit',
+                  style:
+                      TextStyles.bold23.copyWith(color: AppColors.primaryColor))
+            ],
           ),
         ),
-        PageViewItem(
-            isVisible: (pageController.hasClients
-                    ? pageController.page!.round()
-                    : 1) !=
-                0,
+        const PageViewItem(
+            isVisible: false,
             subtitle:
                 'نقدم لك أفضل الفواكه المختارة بعناية. اطلع على التفاصيل والصور والتقييمات لتتأكد من اختيار الفاكهة المثالية',
             image: Assets.imagesPageView2Image,

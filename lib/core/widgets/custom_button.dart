@@ -14,11 +14,11 @@ class CustomButton extends StatelessWidget {
           style: TextButton.styleFrom(
               shape: RoundedRectangleBorder(
                   borderRadius: BorderRadius.circular(16)),
-              backgroundColor: AppColors.primeryColor),
+              backgroundColor: AppColors.primaryColor),
           onPressed: onPressed,
           child: Text(
             text,
-            style: TextStyle(color: Colors.white),
+            style: const TextStyle(color: Colors.white),
           )),
     );
   }

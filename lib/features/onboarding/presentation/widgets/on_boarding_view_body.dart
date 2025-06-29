@@ -1,9 +1,12 @@
 import 'package:dots_indicator/dots_indicator.dart';
 import 'package:flutter/material.dart';
 import 'package:fruits_hub/constants.dart';
+import 'package:fruits_hub/core/services/shared_preferences_singleton.dart';
 import 'package:fruits_hub/core/utils/app_colors.dart';
 import 'package:fruits_hub/core/widgets/custom_button.dart';
 import 'package:fruits_hub/features/onboarding/presentation/widgets/on_boarding_page_view.dart';
+
+import '../../../auth/presentation/views/login_view.dart';
 
 class OnBoardingViewBody extends StatefulWidget {
   const OnBoardingViewBody({super.key});
@@ -44,10 +47,10 @@ class _OnBoardingViewBodyState extends State<OnBoardingViewBody> {
           //  position: currentPage.toDouble(),
           dotsCount: 2,
           decorator: DotsDecorator(
-              activeColor: AppColors.primeryColor,
+              activeColor: AppColors.primaryColor,
               color: currentPage == 1
-                  ? AppColors.primeryColor
-                  : AppColors.primeryColor.withOpacity(0.5)),
+                  ? AppColors.primaryColor
+                  : AppColors.primaryColor.withOpacity(0.5)),
         ),
         const SizedBox(
           height: 29,
@@ -59,7 +62,13 @@ class _OnBoardingViewBodyState extends State<OnBoardingViewBody> {
           visible: currentPage == 1 ? true : false,
           child: Padding(
             padding: const EdgeInsets.symmetric(horizontal: kHorizontalPadding),
-            child: CustomButton(onPressed: () {}, text: 'ابدأ الان'),
+            child: CustomButton(
+                onPressed: () {
+                  SharedPreferencesSingleton.setBool(
+                      kIisOnBoardingViewSeen, true);
+                  Navigator.pushReplacementNamed(context, LoginView.routeName);
+                },
+                text: 'ابدأ الان'),
           ),
         ),
         const SizedBox(
