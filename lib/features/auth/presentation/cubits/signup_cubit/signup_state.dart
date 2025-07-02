@@ -8,9 +8,9 @@ final class SignupInitial extends SignupState {}
 final class SignupLoading extends SignupState {}
 
 final class SignupSuccess extends SignupState {
-  final UserEntity user;
+  final UserEntity userEntity;
 
-  SignupSuccess({required this.user});
+  SignupSuccess({required this.userEntity});
 }
 
 final class SignupFailure extends SignupState {
