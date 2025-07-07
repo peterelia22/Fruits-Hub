@@ -1,3 +1,5 @@
+import 'dart:developer';
+
 import 'package:dartz/dartz.dart';
 import 'package:fruits_hub/core/errors/exceptions.dart';
 
@@ -23,6 +25,7 @@ class AuthRepoImplementation extends AuthRepo {
     } on CustomException catch (e) {
       return left(ServerFailure(e.message));
     } catch (e) {
+      log('Exception in AuthRepoimpl createUserWithEmailAndPassword: $e.toString()');
       return left(ServerFailure(
           'حدث خطأ غير معروف أثناء إنشاء الحساب. الرجاء المحاولة مرة أخرى.'));
     }
