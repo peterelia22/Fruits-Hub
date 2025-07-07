@@ -8,6 +8,7 @@ import 'package:fruits_hub/features/auth/presentation/views/widgets/have_an_acco
 import 'package:fruits_hub/features/auth/presentation/views/widgets/terms_and_conditions.dart';
 
 import '../../../../../core/widgets/custom_button.dart';
+import '../../../../../core/widgets/Custom_password_field.dart';
 
 class SignUpViewBody extends StatefulWidget {
   const SignUpViewBody({super.key});
@@ -52,16 +53,10 @@ class _SignUpViewBodyState extends State<SignUpViewBody> {
               const SizedBox(
                 height: 16,
               ),
-              CustomTextFormField(
+              PasswordField(
                 onSaved: (value) {
                   password = value!;
                 },
-                suffixIcon: const Icon(
-                  Icons.remove_red_eye,
-                  color: Color(0xffc9cecf),
-                ),
-                keyboardType: TextInputType.visiblePassword,
-                hintText: 'كلمة المرور',
               ),
               const SizedBox(
                 height: 16,
