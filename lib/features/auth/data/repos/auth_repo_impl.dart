@@ -46,4 +46,18 @@ class AuthRepoImplementation extends AuthRepo {
           'حدث خطأ غير معروف أثناء تسجيل الدخول. الرجاء المحاولة مرة أخرى.'));
     }
   }
+
+  @override
+  Future<Either<Failure, UserEntity>> signInWithGoogle() async {
+    try {
+      var user = await firebaseAuthService.signInWithGoogle();
+      return right(UserModel.fromFirebaseUser(user));
+    } on CustomException catch (e) {
+      return left(ServerFailure(e.message));
+    } catch (e) {
+      log('Exception in AuthRepoimpl signInWithGoogle: $e.toString()');
+      return left(ServerFailure(
+          'حدث خطأ غير معروف أثناء تسجيل الدخول باستخدام جوجل. الرجاء المحاولة مرة أخرى.'));
+    }
+  }
 }
