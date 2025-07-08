@@ -10,8 +10,8 @@ import 'package:fruits_hub/features/auth/presentation/views/widgets/social_login
 import '../../../../../core/utils/app_text_styles.dart';
 import 'dont_have_an_account.dart';
 
-class LoginViewBody extends StatelessWidget {
-  const LoginViewBody({super.key});
+class SigninViewBody extends StatelessWidget {
+  const SigninViewBody({super.key});
 
   @override
   Widget build(BuildContext context) {

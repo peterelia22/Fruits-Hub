@@ -6,7 +6,7 @@ import 'package:fruits_hub/core/utils/app_colors.dart';
 import 'package:fruits_hub/core/widgets/custom_button.dart';
 import 'package:fruits_hub/features/onboarding/presentation/widgets/on_boarding_page_view.dart';
 
-import '../../../auth/presentation/views/login_view.dart';
+import '../../../auth/presentation/views/signin_view.dart';
 
 class OnBoardingViewBody extends StatefulWidget {
   const OnBoardingViewBody({super.key});
@@ -66,7 +66,7 @@ class _OnBoardingViewBodyState extends State<OnBoardingViewBody> {
                 onPressed: () {
                   SharedPreferencesSingleton.setBool(
                       kIisOnBoardingViewSeen, true);
-                  Navigator.pushReplacementNamed(context, LoginView.routeName);
+                  Navigator.pushReplacementNamed(context, SigninView.routeName);
                 },
                 text: 'ابدأ الان'),
           ),
