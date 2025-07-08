@@ -22,7 +22,7 @@ class _PasswordFieldState extends State<PasswordField> {
         keyboardType: TextInputType.visiblePassword,
         obscureText: isObscured,
         onSaved: (value) {
-          widget.onSaved?.call(value);
+          widget.onSaved;
         },
         suffixIcon: GestureDetector(
           onTap: () {
