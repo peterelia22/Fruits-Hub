@@ -60,4 +60,16 @@ class AuthRepoImplementation extends AuthRepo {
           'حدث خطأ غير معروف أثناء تسجيل الدخول باستخدام جوجل. الرجاء المحاولة مرة أخرى.'));
     }
   }
+
+  @override
+  Future<Either<Failure, UserEntity>> signInWithFacebook() async {
+    try {
+      var user = await firebaseAuthService.signInWithFacebook();
+      return right(UserModel.fromFirebaseUser(user));
+    } catch (e) {
+      log('Exception in AuthRepoimpl signInWithFacebook: $e.toString()');
+      return left(ServerFailure(
+          'حدث خطأ غير معروف أثناء تسجيل الدخول باستخدام فيسبوك. الرجاء المحاولة مرة أخرى.'));
+    }
+  }
 }
