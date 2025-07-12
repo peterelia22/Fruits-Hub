@@ -4,24 +4,30 @@ import 'package:dartz/dartz.dart';
 import 'package:fruits_hub/core/errors/exceptions.dart';
 
 import 'package:fruits_hub/core/errors/failures.dart';
+import 'package:fruits_hub/core/utils/backend_endpoint.dart';
 import 'package:fruits_hub/features/auth/data/models/user_model.dart';
 
 import 'package:fruits_hub/features/auth/domain/entites/user_entity.dart';
 
+import '../../../../core/services/database_service.dart';
 import '../../../../core/services/firebase_auth_service.dart';
 import '../../domain/repos/auth_repo.dart';
 
 class AuthRepoImplementation extends AuthRepo {
   final FirebaseAuthService firebaseAuthService;
+  final DatabaseService databaseService;
 
-  AuthRepoImplementation({required this.firebaseAuthService});
+  AuthRepoImplementation(
+      {required this.databaseService, required this.firebaseAuthService});
   @override
   Future<Either<Failure, UserEntity>> createUserWithEmailAndPassword(
       String email, String password, String name) async {
     try {
       var user = await firebaseAuthService.createUserWithEmailAndPassword(
-          email: email, password: password);
-      return right(UserModel.fromFirebaseUser(user));
+          name: name, email: email, password: password);
+      var userEntity = UserModel.fromFirebaseUser(user);
+      await addUserData(user: userEntity);
+      return right(userEntity);
     } on CustomException catch (e) {
       return left(ServerFailure(e.message));
     } catch (e) {
@@ -71,5 +77,10 @@ class AuthRepoImplementation extends AuthRepo {
       return left(ServerFailure(
           'حدث خطأ غير معروف أثناء تسجيل الدخول باستخدام فيسبوك. الرجاء المحاولة مرة أخرى.'));
     }
+  }
+
+  @override
+  Future addUserData({required UserEntity user}) async {
+    await databaseService.addData(BackendEndpoint.addUserData, user.toMap());
   }
 }
