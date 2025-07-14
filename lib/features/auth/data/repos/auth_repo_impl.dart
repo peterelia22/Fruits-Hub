@@ -29,7 +29,8 @@ class AuthRepoImplementation extends AuthRepo {
           email: email, password: password);
       var userEntity = UserEntity(name: name, email: email, uId: user.uid);
       await addUserData(user: userEntity);
-      return right(userEntity);
+      var storedUser = await getUserData(uId: user.uid);
+      return right(storedUser);
     } on CustomException catch (e) {
       await deleteUser(user);
       return left(ServerFailure(e.message));
@@ -94,7 +95,13 @@ class AuthRepoImplementation extends AuthRepo {
     try {
       var user = await firebaseAuthService.signInWithFacebook();
       var userEntity = UserModel.fromFirebaseUser(user);
-      await addUserData(user: userEntity);
+      var isUserExists = await databaseService.checksIfDataExists(
+          path: BackendEndpoint.isUserExists, documentId: userEntity.uId);
+      if (isUserExists) {
+        await getUserData(uId: userEntity.uId);
+      } else {
+        await addUserData(user: userEntity);
+      }
       return right(userEntity);
     } catch (e) {
       await deleteUser(user);
