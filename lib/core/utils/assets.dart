@@ -49,5 +49,9 @@ class Assets {
   /// Assets for imagesSplashLogo
   /// assets/images/splash_logo.svg
   static const String imagesSplashLogo = "assets/images/splash_logo.svg";
+
+  /// Assets for imagesUserAvatar
+  /// assets/images/user_avatar.svg
+  static const String imagesUserAvatar = "assets/images/user_avatar.svg";
 }
 
