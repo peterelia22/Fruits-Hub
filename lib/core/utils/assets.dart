@@ -55,7 +55,12 @@ class Assets {
   static const String imagesSplashLogo = "assets/images/splash_logo.svg";
 
   /// Assets for imagesUserAvatar
+<<<<<<< HEAD
   /// assets/images/user_avatar.png
   static const String imagesUserAvatar = "assets/images/user_avatar.png";
+=======
+  /// assets/images/user_avatar.svg
+  static const String imagesUserAvatar = "assets/images/user_avatar.svg";
+>>>>>>> 0eb302c36427c02580c874d2372c63def09d5742
 }
 
