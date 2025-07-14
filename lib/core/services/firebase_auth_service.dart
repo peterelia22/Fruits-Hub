@@ -5,6 +5,16 @@ import 'package:fruits_hub/core/errors/exceptions.dart';
 import 'package:google_sign_in/google_sign_in.dart';
 
 class FirebaseAuthService {
+  Future deleteUser() async {
+    try {
+      await FirebaseAuth.instance.currentUser!.delete();
+    } catch (e) {
+      log('Exception in FirebaseAuthService.deleteUser: ${e.toString()}');
+      throw CustomException(
+          message: 'حدث خطأ أثناء حذف الحساب. الرجاء المحاولة مرة أخرى.');
+    }
+  }
+
   Future<User> signInWithFacebook() async {
     // Trigger the sign-in flow
     final LoginResult loginResult = await FacebookAuth.instance.login();
@@ -61,8 +71,10 @@ class FirebaseAuthService {
     }
   }
 
-  Future<User> createUserWithEmailAndPassword(
-      {required String email, required String password}) async {
+  Future<User> createUserWithEmailAndPassword({
+    required String email,
+    required String password,
+  }) async {
     try {
       final credential =
           await FirebaseAuth.instance.createUserWithEmailAndPassword(
