@@ -22,6 +22,10 @@ class Assets {
   /// assets/images/logo.png
   static const String imagesLogo = "assets/images/logo.png";
 
+  /// Assets for imagesNotification
+  /// assets/images/notification.svg
+  static const String imagesNotification = "assets/images/notification.svg";
+
   /// Assets for imagesPageView1Image
   /// assets/images/page_view1_image.svg
   static const String imagesPageView1Image = "assets/images/page_view1_image.svg";
@@ -49,5 +53,9 @@ class Assets {
   /// Assets for imagesSplashLogo
   /// assets/images/splash_logo.svg
   static const String imagesSplashLogo = "assets/images/splash_logo.svg";
+
+  /// Assets for imagesUserAvatar
+  /// assets/images/user_avatar.png
+  static const String imagesUserAvatar = "assets/images/user_avatar.png";
 }
 
