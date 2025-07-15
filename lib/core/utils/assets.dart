@@ -1,7 +1,7 @@
 // ignore_for_file: prefer_single_quotes
 class Assets {
   Assets._();
-
+  
   /// Assets for imagesApple
   /// assets/images/apple.svg
   static const String imagesApple = "assets/images/apple.svg";
@@ -13,6 +13,10 @@ class Assets {
   /// Assets for imagesFacebook
   /// assets/images/facebook.svg
   static const String imagesFacebook = "assets/images/facebook.svg";
+
+  /// Assets for imagesFilterIcon
+  /// assets/images/filter_icon.svg
+  static const String imagesFilterIcon = "assets/images/filter_icon.svg";
 
   /// Assets for imagesGoogle
   /// assets/images/google.svg
@@ -28,27 +32,27 @@ class Assets {
 
   /// Assets for imagesPageView1Image
   /// assets/images/page_view1_image.svg
-  static const String imagesPageView1Image =
-      "assets/images/page_view1_image.svg";
+  static const String imagesPageView1Image = "assets/images/page_view1_image.svg";
 
   /// Assets for imagesPageView2Image
   /// assets/images/page_view2_image.svg
-  static const String imagesPageView2Image =
-      "assets/images/page_view2_image.svg";
+  static const String imagesPageView2Image = "assets/images/page_view2_image.svg";
 
   /// Assets for imagesPageview1backgroubdimage
   /// assets/images/pageview1backgroubdimage.svg
-  static const String imagesPageview1backgroubdimage =
-      "assets/images/pageview1backgroubdimage.svg";
+  static const String imagesPageview1backgroubdimage = "assets/images/pageview1backgroubdimage.svg";
 
   /// Assets for imagesPageview2backgroubdimage
   /// assets/images/pageview2backgroubdimage.svg
-  static const String imagesPageview2backgroubdimage =
-      "assets/images/pageview2backgroubdimage.svg";
+  static const String imagesPageview2backgroubdimage = "assets/images/pageview2backgroubdimage.svg";
 
   /// Assets for imagesPlant
   /// assets/images/plant.svg
   static const String imagesPlant = "assets/images/plant.svg";
+
+  /// Assets for imagesSearchIcon
+  /// assets/images/search_icon.svg
+  static const String imagesSearchIcon = "assets/images/search_icon.svg";
 
   /// Assets for imagesSplashBottom
   /// assets/images/splash_bottom.svg
@@ -62,3 +66,4 @@ class Assets {
   /// assets/images/user_avatar.png
   static const String imagesUserAvatar = "assets/images/user_avatar.png";
 }
+
