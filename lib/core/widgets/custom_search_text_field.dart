@@ -9,35 +9,47 @@ class CustomSearchTextField extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return TextField(
-      keyboardType: TextInputType.text,
-      decoration: InputDecoration(
-          prefixIcon: SizedBox(
-            height: 20,
-            width: 20,
-            child: Center(
-              child: SvgPicture.asset(
-                Assets.imagesSearchIcon,
+    return Container(
+      decoration: const BoxDecoration(
+        boxShadow: [
+          BoxShadow(
+            color: Color(0x0A000000),
+            blurRadius: 9,
+            offset: Offset(0, 2),
+            spreadRadius: 0,
+          ),
+        ],
+      ),
+      child: TextField(
+        keyboardType: TextInputType.text,
+        decoration: InputDecoration(
+            prefixIcon: SizedBox(
+              height: 20,
+              width: 20,
+              child: Center(
+                child: SvgPicture.asset(
+                  Assets.imagesSearchIcon,
+                ),
               ),
             ),
-          ),
-          suffixIcon: SizedBox(
-            width: 20,
-            height: 20,
-            child: Center(
-              child: SvgPicture.asset(
-                Assets.imagesFilterIcon,
+            suffixIcon: SizedBox(
+              width: 20,
+              height: 20,
+              child: Center(
+                child: SvgPicture.asset(
+                  Assets.imagesFilterIcon,
+                ),
               ),
             ),
-          ),
-          hintStyle:
-              TextStyles.regular13.copyWith(color: const Color(0XFF949D9e)),
-          hintText: 'ابحث عن.......',
-          filled: true,
-          fillColor: Colors.white,
-          border: buildBorder(),
-          enabledBorder: buildBorder(),
-          focusedBorder: buildBorder()),
+            hintStyle:
+                TextStyles.regular13.copyWith(color: const Color(0XFF949D9e)),
+            hintText: 'ابحث عن.......',
+            filled: true,
+            fillColor: Colors.white,
+            border: buildBorder(),
+            enabledBorder: buildBorder(),
+            focusedBorder: buildBorder()),
+      ),
     );
   }
 
