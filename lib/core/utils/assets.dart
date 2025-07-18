@@ -2,6 +2,22 @@
 class Assets {
   Assets._();
   
+  /// Assets for imagesActiveElements
+  /// assets/images/active_elements.svg
+  static const String imagesActiveElements = "assets/images/active_elements.svg";
+
+  /// Assets for imagesActiveHome
+  /// assets/images/active_home.svg
+  static const String imagesActiveHome = "assets/images/active_home.svg";
+
+  /// Assets for imagesActiveShoppingCart
+  /// assets/images/active_shopping-cart.svg
+  static const String imagesActiveShoppingCart = "assets/images/active_shopping-cart.svg";
+
+  /// Assets for imagesActiveUser
+  /// assets/images/active_user.svg
+  static const String imagesActiveUser = "assets/images/active_user.svg";
+
   /// Assets for imagesApple
   /// assets/images/apple.svg
   static const String imagesApple = "assets/images/apple.svg";
@@ -25,6 +41,22 @@ class Assets {
   /// Assets for imagesGoogle
   /// assets/images/google.svg
   static const String imagesGoogle = "assets/images/google.svg";
+
+  /// Assets for imagesInActiveElements
+  /// assets/images/inActive_elements.svg
+  static const String imagesInActiveElements = "assets/images/inActive_elements.svg";
+
+  /// Assets for imagesInActiveHome
+  /// assets/images/inActive_home.svg
+  static const String imagesInActiveHome = "assets/images/inActive_home.svg";
+
+  /// Assets for imagesInActiveShoppingCart
+  /// assets/images/inActive_shopping-cart.svg
+  static const String imagesInActiveShoppingCart = "assets/images/inActive_shopping-cart.svg";
+
+  /// Assets for imagesInActiveUser
+  /// assets/images/inActive_user.svg
+  static const String imagesInActiveUser = "assets/images/inActive_user.svg";
 
   /// Assets for imagesLogo
   /// assets/images/logo.png
