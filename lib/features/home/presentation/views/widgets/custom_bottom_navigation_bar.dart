@@ -1,5 +1,7 @@
 import 'package:flutter/material.dart';
+import 'package:fruits_hub/features/home/domain/entites/bottom_navigation_bar.dart';
 import 'package:fruits_hub/features/home/presentation/views/widgets/in_active_item.dart';
+import 'package:fruits_hub/features/home/presentation/views/widgets/navigation_bar_item.dart';
 
 import '../../../../../core/utils/assets.dart';
 
@@ -28,7 +30,14 @@ class CustomBottomNavigationBar extends StatelessWidget {
           )
         ],
       ),
-      child: InActiveItem(image: Assets.imagesInActiveHome),
+      child: Row(
+        children: bottomNavigationBarItems.map((e) {
+          return NavigationBarItem(
+            isActive: false,
+            bottomNavigationBarEntity: e,
+          );
+        }).toList(),
+      ),
     );
   }
 }
