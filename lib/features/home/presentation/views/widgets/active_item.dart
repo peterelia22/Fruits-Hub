@@ -34,9 +34,11 @@ class ActiveItem extends StatelessWidget {
             const SizedBox(
               width: 4,
             ),
-            Text(text,
-                style: TextStyles.semiBold11
-                    .copyWith(color: AppColors.primaryColor))
+            Flexible(
+              child: Text(text,
+                  style: TextStyles.semiBold11
+                      .copyWith(color: AppColors.primaryColor)),
+            )
           ],
         ),
       ),
