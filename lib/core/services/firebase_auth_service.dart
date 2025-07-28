@@ -104,4 +104,8 @@ class FirebaseAuthService {
               'حدث خطأ غير معروف أثناء إنشاء الحساب. الرجاء المحاولة مرة أخرى.');
     }
   }
+
+  bool isUserLoggedIn() {
+    return FirebaseAuth.instance.currentUser != null;
+  }
 }
