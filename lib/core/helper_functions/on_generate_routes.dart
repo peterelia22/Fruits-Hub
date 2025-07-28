@@ -3,6 +3,7 @@ import 'package:fruits_hub/features/auth/presentation/views/signin_view.dart';
 import 'package:fruits_hub/features/auth/presentation/views/sign_up_view.dart';
 import 'package:fruits_hub/features/splash/presentation/views/splash_view.dart';
 
+import '../../features/best_selling_fruits/presentation/views/best_selling_fruits_view.dart';
 import '../../features/home/presentation/views/home_view.dart';
 import '../../features/onboarding/presentation/views/on_boarding_view.dart';
 
@@ -27,6 +28,10 @@ Route<dynamic> onGenerateRoute(RouteSettings settings) {
     case HomeView.routeName:
       return MaterialPageRoute(
         builder: (context) => const HomeView(),
+      );
+    case BestSellingFruitsView.routeName:
+      return MaterialPageRoute(
+        builder: (context) => const BestSellingFruitsView(),
       );
     default:
       return MaterialPageRoute(
