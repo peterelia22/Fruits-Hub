@@ -51,6 +51,23 @@ class ProductsModel {
         sellingCount: json['sellingCount'],
         imageFile: File(json['imageFile'] ?? ''));
   }
+  ProductsEntity toEntity() {
+    return ProductsEntity(
+      name: name,
+      code: code,
+      description: description,
+      price: price,
+      imageFile: imageFile,
+      isFeatured: isFeatured,
+      imageUrl: imageUrl,
+      expirationMonths: expirationMonths,
+      numOfCalories: numOfCalories,
+      gramAmount: gramAmount,
+      isOrganic: isOrganic,
+      reviews: reviews.map((review) => review.toEntity()).toList(),
+    );
+  }
+
   toJson() {
     return {
       'name': name,

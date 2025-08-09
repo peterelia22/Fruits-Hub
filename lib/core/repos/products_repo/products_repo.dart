@@ -5,5 +5,5 @@ import '../../errors/failures.dart';
 
 abstract class ProductsRepo {
   Future<Either<Failure, List<ProductsEntity>>> getAllProducts();
-  Future<Either<Failure, ProductsEntity>> getBestSellingProducts();
+  Future<Either<Failure, List<ProductsEntity>>> getBestSellingProducts();
 }
