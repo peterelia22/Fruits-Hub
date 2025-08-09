@@ -7,7 +7,7 @@ import 'package:fruits_hub/features/onboarding/presentation/views/on_boarding_vi
 import 'package:svg_flutter/svg.dart';
 
 import '../../../../../core/services/shared_preferences_singleton.dart';
-import '../../../../home/presentation/views/home_view.dart';
+import '../../../../home/presentation/views/main_view.dart';
 
 class SplashViewBody extends StatefulWidget {
   const SplashViewBody({super.key});
@@ -50,7 +50,7 @@ class _SplashViewBodyState extends State<SplashViewBody> {
         if (isUserLoggedIn) {
           Navigator.pushReplacementNamed(
             context,
-            HomeView.routeName,
+            MainView.routeName,
           );
         } else {
           Navigator.pushReplacementNamed(
