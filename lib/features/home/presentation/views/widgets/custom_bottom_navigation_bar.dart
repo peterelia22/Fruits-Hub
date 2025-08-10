@@ -1,20 +1,18 @@
 import 'package:flutter/material.dart';
 import 'package:fruits_hub/features/home/domain/entites/bottom_navigation_bar.dart';
-import 'package:fruits_hub/features/home/presentation/views/widgets/in_active_item.dart';
 import 'package:fruits_hub/features/home/presentation/views/widgets/navigation_bar_item.dart';
-
 import '../../../../../core/utils/assets.dart';
 
-class CustomBottomNavigationBar extends StatefulWidget {
-  const CustomBottomNavigationBar({super.key});
+class CustomBottomNavigationBar extends StatelessWidget {
+  final int currentIndex;
+  final Function(int) onTap;
 
-  @override
-  State<CustomBottomNavigationBar> createState() =>
-      _CustomBottomNavigationBarState();
-}
+  const CustomBottomNavigationBar({
+    super.key,
+    required this.currentIndex,
+    required this.onTap,
+  });
 
-class _CustomBottomNavigationBarState extends State<CustomBottomNavigationBar> {
-  int selectedIndex = 0;
   @override
   Widget build(BuildContext context) {
     return Container(
@@ -42,16 +40,13 @@ class _CustomBottomNavigationBarState extends State<CustomBottomNavigationBar> {
           var index = e.key;
           var item = e.value;
           return Expanded(
-            flex: index == selectedIndex ? 3 : 2,
+            flex: index == currentIndex ? 3 : 2,
             child: GestureDetector(
-              onTap: () {
-                setState(() {
-                  selectedIndex = index;
-                });
-              },
+              onTap: () => onTap(index),
               child: NavigationBarItem(
-                  isActive: selectedIndex == index,
-                  bottomNavigationBarEntity: item),
+                isActive: currentIndex == index,
+                bottomNavigationBarEntity: item,
+              ),
             ),
           );
         }).toList(),
