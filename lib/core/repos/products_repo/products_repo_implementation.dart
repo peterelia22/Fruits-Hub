@@ -44,6 +44,7 @@ class ProductsRepoImplementation extends ProductsRepo {
           productsList.map((e) => e.toEntity()).toList();
       return right(productsEntityList);
     } catch (e) {
+      print('Error fetching best selling products: $e');
       return left(ServerFailure('حدث خطأ أثناء جلب المنتجات: $e'));
     }
   }

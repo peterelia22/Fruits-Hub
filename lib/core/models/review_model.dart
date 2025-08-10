@@ -14,6 +14,7 @@ class ReviewModel {
     required this.image,
     required this.date,
   });
+
   factory ReviewModel.fromEntity(ReviewEntity reviewEntity) {
     return ReviewModel(
       name: reviewEntity.name,
@@ -23,15 +24,17 @@ class ReviewModel {
       date: reviewEntity.date,
     );
   }
+
   factory ReviewModel.fromJson(Map<String, dynamic> json) {
     return ReviewModel(
-      name: json['name'],
-      reviewDescription: json['reviewDescription'],
-      rating: json['rating'],
-      image: json['image'],
-      date: json['date'],
+      name: json['name'] ?? '',
+      reviewDescription: json['reviewDescription'] ?? '',
+      rating: json['rating'] ?? 0,
+      image: json['image'] ?? '',
+      date: json['date'] ?? '',
     );
   }
+
   ReviewEntity toEntity() {
     return ReviewEntity(
       name: name,
