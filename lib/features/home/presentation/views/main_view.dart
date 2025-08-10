@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:fruits_hub/features/home/presentation/views/products_view.dart';
 
 import 'cart_view.dart';
 import 'widgets/custom_bottom_navigation_bar.dart';
@@ -17,7 +18,7 @@ class _MainViewState extends State<MainView> {
 
   final List<Widget> views = [
     const HomeView(),
-    const CartView(),
+    const ProductsView(),
   ];
 
   @override
