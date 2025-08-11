@@ -24,7 +24,7 @@ class ActiveItem extends StatelessWidget {
               width: 30,
               height: 30,
               decoration: ShapeDecoration(
-                color: const Color(0xFF1B5E37),
+                color: AppColors.primaryColor,
                 shape: RoundedRectangleBorder(
                   borderRadius: BorderRadius.circular(30),
                 ),

@@ -26,29 +26,29 @@ class _ProductsViewBodyState extends State<ProductsViewBody> {
   @override
   Widget build(BuildContext context) {
     return Padding(
-      padding: EdgeInsets.symmetric(horizontal: kHorizontalPadding),
+      padding: const EdgeInsets.symmetric(horizontal: kHorizontalPadding),
       child: CustomScrollView(
         slivers: [
           SliverToBoxAdapter(
             child: Column(
               children: [
-                SizedBox(height: kTopPadding),
+                const SizedBox(height: kTopPadding),
                 buildAppBar(title: 'المنتجات'),
-                SizedBox(
+                const SizedBox(
                   height: kTopPadding,
                 ),
-                CustomSearchTextField(),
-                SizedBox(
+                const CustomSearchTextField(),
+                const SizedBox(
                   height: 12,
                 ),
-                ProductsHeader(),
-                SizedBox(
+                const ProductsHeader(),
+                const SizedBox(
                   height: 8,
                 ),
               ],
             ),
           ),
-          ProducstsGridViewBlocBuilder()
+          const ProducstsGridViewBlocBuilder()
         ],
       ),
     );

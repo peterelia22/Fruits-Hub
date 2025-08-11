@@ -6,12 +6,16 @@ import '../widgets/notifcation_widget.dart';
 
 AppBar buildAppBar({
   required String title,
+  bool showNotification = true,
 }) {
   return AppBar(
-    actions: const [
-      Padding(
-          padding: EdgeInsets.symmetric(horizontal: kHorizontalPadding),
-          child: NotifcationWidget())
+    actions: [
+      Visibility(
+        visible: showNotification,
+        child: const Padding(
+            padding: EdgeInsets.symmetric(horizontal: kHorizontalPadding),
+            child: NotifcationWidget()),
+      )
     ],
     backgroundColor: Colors.transparent,
     elevation: 0,

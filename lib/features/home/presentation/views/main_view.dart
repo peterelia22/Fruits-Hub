@@ -19,6 +19,7 @@ class _MainViewState extends State<MainView> {
   final List<Widget> views = [
     const HomeView(),
     const ProductsView(),
+    const CartView(),
   ];
 
   @override
