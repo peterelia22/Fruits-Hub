@@ -19,14 +19,6 @@ class FruitItem extends StatelessWidget {
       ),
       child: Stack(
         children: [
-          Positioned(
-            right: 0,
-            top: 0,
-            child: IconButton(
-              onPressed: () {},
-              icon: const Icon(Icons.favorite_outline),
-            ),
-          ),
           Positioned.fill(
               child: Column(
             children: [
@@ -78,7 +70,15 @@ class FruitItem extends StatelessWidget {
                 ),
               ),
             ],
-          ))
+          )),
+          Positioned(
+            right: 0,
+            top: 0,
+            child: IconButton(
+              onPressed: () {},
+              icon: const Icon(Icons.favorite_outline),
+            ),
+          ),
         ],
       ),
     );

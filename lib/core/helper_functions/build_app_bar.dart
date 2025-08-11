@@ -4,7 +4,9 @@ import '../../constants.dart';
 import '../utils/app_text_styles.dart';
 import '../widgets/notifcation_widget.dart';
 
-AppBar buildAppBar() {
+AppBar buildAppBar({
+  required String title,
+}) {
   return AppBar(
     actions: const [
       Padding(
@@ -14,8 +16,8 @@ AppBar buildAppBar() {
     backgroundColor: Colors.transparent,
     elevation: 0,
     centerTitle: true,
-    title: const Text(
-      'الأكثر مبيعًا',
+    title: Text(
+      title,
       textAlign: TextAlign.center,
       style: TextStyles.bold19,
     ),
