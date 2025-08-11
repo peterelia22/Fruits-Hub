@@ -3,8 +3,8 @@ import 'package:fruits_hub/core/entities/products_entity.dart';
 
 import '../../../../../core/widgets/fruit_item.dart';
 
-class BestSellingGridView extends StatelessWidget {
-  const BestSellingGridView({super.key, required this.products});
+class ProductsGridView extends StatelessWidget {
+  const ProductsGridView({super.key, required this.products});
   final List<ProductsEntity> products;
   @override
   Widget build(BuildContext context) {

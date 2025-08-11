@@ -5,7 +5,7 @@ import 'package:fruits_hub/core/widgets/custom_search_text_field.dart';
 import 'package:fruits_hub/features/home/presentation/views/widgets/best_selling_header.dart';
 
 import '../../../../../constants.dart';
-import 'best_selling_grid_view_bloc_builder.dart';
+import 'products_grid_view_bloc_builder.dart';
 import 'custom_home_app_bar.dart';
 import 'featured_list.dart';
 
@@ -54,7 +54,7 @@ class _HomeViewBodyState extends State<HomeViewBody> {
               ],
             ),
           ),
-          BestSellingGridViewBlocBuilder()
+          ProducstsGridViewBlocBuilder()
         ],
       ),
     );
