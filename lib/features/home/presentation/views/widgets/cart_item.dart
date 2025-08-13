@@ -19,8 +19,8 @@ class CartItem extends StatelessWidget {
             width: 73,
             height: 92,
             decoration: const BoxDecoration(color: const Color(0xFFF3F5F7)),
-            child: const CustomNetworkImage(
-                imageUrl: 'https://placehold.co/53x40'),
+            child: CustomNetworkImage(
+                imageUrl: cartItemEntity.productsEntity.imageUrl!),
           ),
           const SizedBox(
             width: 17,
@@ -33,25 +33,26 @@ class CartItem extends StatelessWidget {
                 Row(
                   mainAxisAlignment: MainAxisAlignment.spaceBetween,
                   children: [
-                    const Text('بطيخ', style: TextStyles.bold13),
+                    Text(cartItemEntity.productsEntity.name,
+                        style: TextStyles.bold13),
                     GestureDetector(
                         onTap: () {},
                         child: SvgPicture.asset(Assets.imagesTrash))
                   ],
                 ),
-                Text('3 كم',
+                Text('${cartItemEntity.calculateTotalWeight().toString()} كم',
                     textAlign: TextAlign.right,
                     style: TextStyles.regular13
                         .copyWith(color: AppColors.secondaryColor)),
-                SizedBox(
+                const SizedBox(
                   height: 6,
                 ),
                 Row(
                   children: [
-                    CartItemActionButtons(),
-                    Spacer(),
+                    const CartItemActionButtons(),
+                    const Spacer(),
                     Text(
-                      '60 جنيه ',
+                      '${cartItemEntity.calculateTotalPrice()} جنيه ',
                       style: TextStyles.bold16
                           .copyWith(color: AppColors.secondaryColor),
                     )
