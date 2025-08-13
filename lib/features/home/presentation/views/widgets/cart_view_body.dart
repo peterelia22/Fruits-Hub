@@ -48,11 +48,17 @@ class CartViewBody extends StatelessWidget {
             ),
           ],
         ),
-        Positioned(
-            left: 16,
-            right: 16,
-            bottom: MediaQuery.sizeOf(context).height * 0.03,
-            child: CustomButton(onPressed: () {}, text: 'الدفع  120جنيه'))
+        Visibility(
+          visible: context.read<CartCubit>().cartEntity.cartItems.isNotEmpty,
+          child: Positioned(
+              left: 16,
+              right: 16,
+              bottom: MediaQuery.sizeOf(context).height * 0.03,
+              child: CustomButton(
+                  onPressed: () {},
+                  text:
+                      'الدفع   ${context.watch<CartCubit>().cartEntity.calculateTotalPrice()} جنيه')),
+        )
       ],
     );
   }
