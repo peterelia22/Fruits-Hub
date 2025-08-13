@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:fruits_hub/core/utils/app_colors.dart';
 import 'package:fruits_hub/core/utils/app_text_styles.dart';
 import 'package:fruits_hub/core/utils/assets.dart';
@@ -6,6 +7,8 @@ import 'package:fruits_hub/core/widgets/custom_network_image.dart';
 import 'package:fruits_hub/features/home/domain/entites/cart_item_entity.dart';
 import 'package:fruits_hub/features/home/presentation/views/widgets/cart_item_action_buttons.dart';
 import 'package:svg_flutter/svg.dart';
+
+import '../../cubits/cart_cubit/cart_cubit.dart';
 
 class CartItem extends StatelessWidget {
   const CartItem({super.key, required this.cartItemEntity});
@@ -36,7 +39,11 @@ class CartItem extends StatelessWidget {
                     Text(cartItemEntity.productsEntity.name,
                         style: TextStyles.bold13),
                     GestureDetector(
-                        onTap: () {},
+                        onTap: () {
+                          context
+                              .read<CartCubit>()
+                              .deleteCartItem(cartItemEntity);
+                        },
                         child: SvgPicture.asset(Assets.imagesTrash))
                   ],
                 ),
@@ -49,7 +56,9 @@ class CartItem extends StatelessWidget {
                 ),
                 Row(
                   children: [
-                    const CartItemActionButtons(),
+                    CartItemActionButtons(
+                      cartItemEntity: cartItemEntity,
+                    ),
                     const Spacer(),
                     Text(
                       '${cartItemEntity.calculateTotalPrice()} جنيه ',
