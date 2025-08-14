@@ -1,8 +1,10 @@
 import 'package:flutter/material.dart';
+import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:fruits_hub/core/utils/app_colors.dart';
 import 'package:fruits_hub/core/utils/app_text_styles.dart';
 import 'package:fruits_hub/features/home/domain/entites/cart_item_entity.dart';
 
+import '../../cubits/cart_item_cubit/cart_item_cubit.dart';
 import 'cart_item_action_button.dart';
 
 class CartItemActionButtons extends StatelessWidget {
@@ -18,6 +20,7 @@ class CartItemActionButtons extends StatelessWidget {
             color: AppColors.primaryColor,
             onPressed: () {
               cartItemEntity.increaseCount();
+              context.read<CartItemCubit>().updateCartItem(cartItemEntity);
             }),
         Padding(
             padding: const EdgeInsetsGeometry.symmetric(horizontal: 16),
@@ -30,6 +33,7 @@ class CartItemActionButtons extends StatelessWidget {
             onPressed: () {
               if (cartItemEntity.count > 1) {
                 cartItemEntity.decreaseCount();
+                context.read<CartItemCubit>().updateCartItem(cartItemEntity);
               }
             })
       ],
