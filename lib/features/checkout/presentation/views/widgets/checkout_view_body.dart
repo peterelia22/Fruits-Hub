@@ -42,6 +42,7 @@ class _CheckoutViewBodyState extends State<CheckoutViewBody> {
             height: 20,
           ),
           CheckoutSteps(
+            pageController: pageController,
             currentPageIndex: currentPageIndex,
           ),
           Expanded(
@@ -52,12 +53,25 @@ class _CheckoutViewBodyState extends State<CheckoutViewBody> {
                     duration: const Duration(milliseconds: 300),
                     curve: Curves.easeIn);
               },
-              text: 'التالي'),
+              text: getNextButtonText(currentPageIndex)),
           const SizedBox(
             height: 32,
           )
         ],
       ),
     );
+  }
+
+  String getNextButtonText(int currentPageIndex) {
+    switch (currentPageIndex) {
+      case 0:
+        return 'التالي';
+      case 1:
+        return 'التالي';
+      case 2:
+        return 'ادفع باستخدام باي بال';
+      default:
+        return 'التالي';
+    }
   }
 }
