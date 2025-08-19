@@ -11,9 +11,9 @@ class CheckoutSteps extends StatelessWidget {
           getSteps().length,
           (index) => Expanded(
                   child: StepItem(
-                stepNumber: index.toString(),
+                stepNumber: (index + 1).toString(),
                 text: getSteps()[index],
-                isActive: true,
+                isActive: false,
               ))),
     );
   }
