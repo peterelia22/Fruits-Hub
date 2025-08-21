@@ -10,7 +10,8 @@ class ShippingStepSection extends StatefulWidget {
   State<ShippingStepSection> createState() => _ShippingStepSectionState();
 }
 
-class _ShippingStepSectionState extends State<ShippingStepSection> {
+class _ShippingStepSectionState extends State<ShippingStepSection>
+    with AutomaticKeepAliveClientMixin {
   int currentIndex = -1;
   @override
   Widget build(BuildContext context) {
@@ -48,4 +49,8 @@ class _ShippingStepSectionState extends State<ShippingStepSection> {
       ],
     );
   }
+
+  @override
+  // TODO: implement wantKeepAlive
+  bool get wantKeepAlive => true;
 }
