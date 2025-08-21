@@ -6,7 +6,6 @@ import '../cubits/cart_item_cubit/cart_item_cubit.dart';
 
 class CartView extends StatelessWidget {
   const CartView({super.key});
-
   @override
   Widget build(BuildContext context) {
     return BlocProvider(
