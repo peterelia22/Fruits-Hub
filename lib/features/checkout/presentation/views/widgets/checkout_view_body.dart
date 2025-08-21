@@ -1,6 +1,9 @@
 import 'package:flutter/material.dart';
+import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:fruits_hub/constants.dart';
+import 'package:fruits_hub/core/helper_functions/build_error_bar.dart';
 import 'package:fruits_hub/core/widgets/custom_button.dart';
+import 'package:fruits_hub/features/checkout/presentation/domain/entities/order_entity.dart';
 import 'package:fruits_hub/features/checkout/presentation/views/widgets/checkout_steps.dart';
 
 import 'checkout_steps_page_view.dart';
@@ -49,9 +52,13 @@ class _CheckoutViewBodyState extends State<CheckoutViewBody> {
               child: CheckoutStepsPageView(pageController: pageController)),
           CustomButton(
               onPressed: () {
-                pageController.nextPage(
-                    duration: const Duration(milliseconds: 300),
-                    curve: Curves.easeIn);
+                if (context.read<OrderEntity>().payWithCash != null) {
+                  pageController.nextPage(
+                      duration: const Duration(milliseconds: 300),
+                      curve: Curves.easeIn);
+                } else {
+                  buildErrorBar(context, 'يرجي تحديد طريقة الدفع');
+                }
               },
               text: getNextButtonText(currentPageIndex)),
           const SizedBox(
