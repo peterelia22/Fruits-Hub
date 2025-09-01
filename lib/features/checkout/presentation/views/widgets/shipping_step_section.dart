@@ -31,7 +31,7 @@ class _ShippingStepSectionState extends State<ShippingStepSection>
           isSelected: currentIndex == 0,
           title: 'الدفع عند الاستلام',
           subtitle: 'التسليم من المكان',
-          price: '${orderEntity.cartEntity.calculateTotalPrice() + 40} جنيه',
+          price: '${orderEntity.cartEntity.calculateTotalPrice() + 30} جنيه',
         ),
         const SizedBox(
           height: 8,
