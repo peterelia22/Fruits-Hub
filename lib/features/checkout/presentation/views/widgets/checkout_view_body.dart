@@ -17,6 +17,8 @@ class CheckoutViewBody extends StatefulWidget {
 
 class _CheckoutViewBodyState extends State<CheckoutViewBody> {
   late PageController pageController;
+  ValueNotifier<AutovalidateMode> valueNotifier =
+      ValueNotifier(AutovalidateMode.disabled);
   @override
   void initState() {
     pageController = PageController();
@@ -31,10 +33,12 @@ class _CheckoutViewBodyState extends State<CheckoutViewBody> {
   @override
   void dispose() {
     pageController.dispose();
+    valueNotifier.dispose();
     super.dispose();
   }
 
   int currentPageIndex = 0;
+  final GlobalKey<FormState> _formKey = GlobalKey<FormState>();
   @override
   Widget build(BuildContext context) {
     return Padding(
@@ -49,15 +53,17 @@ class _CheckoutViewBodyState extends State<CheckoutViewBody> {
             currentPageIndex: currentPageIndex,
           ),
           Expanded(
-              child: CheckoutStepsPageView(pageController: pageController)),
+              child: CheckoutStepsPageView(
+            valueListenable: valueNotifier,
+            pageController: pageController,
+            formKey: _formKey,
+          )),
           CustomButton(
               onPressed: () {
-                if (context.read<OrderEntity>().payWithCash != null) {
-                  pageController.nextPage(
-                      duration: const Duration(milliseconds: 300),
-                      curve: Curves.easeIn);
-                } else {
-                  buildErrorBar(context, 'يرجي تحديد طريقة الدفع');
+                if (currentPageIndex == 0) {
+                  handleShippingSectionValidation(context);
+                } else if (currentPageIndex == 1) {
+                  handleAddressValidation();
                 }
               },
               text: getNextButtonText(currentPageIndex)),
@@ -67,6 +73,15 @@ class _CheckoutViewBodyState extends State<CheckoutViewBody> {
         ],
       ),
     );
+  }
+
+  void handleShippingSectionValidation(BuildContext context) {
+    if (context.read<OrderEntity>().payWithCash != null) {
+      pageController.nextPage(
+          duration: const Duration(milliseconds: 300), curve: Curves.easeIn);
+    } else {
+      buildErrorBar(context, 'يرجي تحديد طريقة الدفع');
+    }
   }
 
   String getNextButtonText(int currentPageIndex) {
@@ -79,6 +94,16 @@ class _CheckoutViewBodyState extends State<CheckoutViewBody> {
         return 'ادفع باستخدام باي بال';
       default:
         return 'التالي';
+    }
+  }
+
+  void handleAddressValidation() {
+    if (_formKey.currentState!.validate()) {
+      _formKey.currentState!.save();
+      pageController.nextPage(
+          duration: const Duration(milliseconds: 300), curve: Curves.bounceIn);
+    } else {
+      valueNotifier.value = AutovalidateMode.always;
     }
   }
 }

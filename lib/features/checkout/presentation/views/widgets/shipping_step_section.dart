@@ -15,6 +15,7 @@ class _ShippingStepSectionState extends State<ShippingStepSection>
   int currentIndex = -1;
   @override
   Widget build(BuildContext context) {
+    super.build(context);
     var orderEntity = context.read<OrderEntity>();
     return Column(
       children: [
