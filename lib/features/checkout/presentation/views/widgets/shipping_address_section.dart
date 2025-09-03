@@ -3,7 +3,7 @@ import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:fruits_hub/constants.dart';
 import 'package:fruits_hub/core/widgets/custom_text_field.dart';
-import 'package:fruits_hub/features/checkout/presentation/domain/entities/order_entity.dart';
+import 'package:fruits_hub/features/checkout/domain/entities/order_entity.dart';
 
 class ShippingAddressSection extends StatelessWidget {
   const ShippingAddressSection(

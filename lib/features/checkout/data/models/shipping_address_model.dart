@@ -1,4 +1,4 @@
-import 'package:fruits_hub/features/checkout/presentation/domain/entities/shipping_address_entity.dart';
+import 'package:fruits_hub/features/checkout/domain/entities/shipping_address_entity.dart';
 
 class ShippingAddressModel {
   String? name;
@@ -31,12 +31,12 @@ class ShippingAddressModel {
       this.phoneNumber});
   toJson() {
     return {
-      'name':name,
-      'phone':phoneNumber,
-      'address':address,
-      'floor':addressDetails,
-      'city':city,
-      'email':email
+      'name': name,
+      'phone': phoneNumber,
+      'address': address,
+      'floor': addressDetails,
+      'city': city,
+      'email': email
     };
   }
 }

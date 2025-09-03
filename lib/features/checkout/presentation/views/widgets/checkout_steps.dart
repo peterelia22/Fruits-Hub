@@ -3,7 +3,7 @@ import 'package:fruits_hub/features/checkout/presentation/views/widgets/step_ite
 import 'package:provider/provider.dart';
 
 import '../../../../../core/helper_functions/build_error_bar.dart';
-import '../../domain/entities/order_entity.dart';
+import '../../../domain/entities/order_entity.dart';
 
 class CheckoutSteps extends StatelessWidget {
   const CheckoutSteps(

@@ -3,7 +3,8 @@ import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:fruits_hub/constants.dart';
 import 'package:fruits_hub/core/helper_functions/build_error_bar.dart';
 import 'package:fruits_hub/core/widgets/custom_button.dart';
-import 'package:fruits_hub/features/checkout/presentation/domain/entities/order_entity.dart';
+import 'package:fruits_hub/features/checkout/domain/entities/order_entity.dart';
+import 'package:fruits_hub/features/checkout/presentation/manager/place_order_cubit/place_order_cubit.dart';
 import 'package:fruits_hub/features/checkout/presentation/views/widgets/checkout_steps.dart';
 
 import 'checkout_steps_page_view.dart';
@@ -64,6 +65,11 @@ class _CheckoutViewBodyState extends State<CheckoutViewBody> {
                   handleShippingSectionValidation(context);
                 } else if (currentPageIndex == 1) {
                   handleAddressValidation();
+                } else {
+                  var orderEntity = context.read<OrderEntity>();
+                  context
+                      .read<PlaceOrderCubit>()
+                      .placeOrder(order: orderEntity);
                 }
               },
               text: getNextButtonText(currentPageIndex)),
