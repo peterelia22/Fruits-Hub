@@ -1,8 +1,13 @@
+import 'dart:developer';
+import 'dart:math' hide log;
+
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:flutter_paypal_payment/flutter_paypal_payment.dart';
 import 'package:fruits_hub/constants.dart';
 import 'package:fruits_hub/core/helper_functions/build_error_bar.dart';
+import 'package:fruits_hub/core/helper_functions/process_paypal_payment.dart';
+import 'package:fruits_hub/core/utils/app_keys.dart';
 import 'package:fruits_hub/core/widgets/custom_button.dart';
 import 'package:fruits_hub/features/checkout/domain/entities/order_entity.dart';
 import 'package:fruits_hub/features/checkout/domain/entities/paypal_payment_entity/paypal_payment_entity.dart';
@@ -68,7 +73,7 @@ class _CheckoutViewBodyState extends State<CheckoutViewBody> {
                 } else if (currentPageIndex == 1) {
                   handleAddressValidation();
                 } else {
-                  _processPayment(context);
+                  processPayPalPayment(context);
                 }
               },
               text: getNextButtonText(currentPageIndex)),
@@ -110,32 +115,5 @@ class _CheckoutViewBodyState extends State<CheckoutViewBody> {
     } else {
       valueNotifier.value = AutovalidateMode.always;
     }
-  }
-
-  void _processPayment(BuildContext context) {
-    var orderEntity = context.read<OrderEntity>();
-    PaypalPaymentEntity paymentEntity =
-        PaypalPaymentEntity.fromEntity(orderEntity);
-    Navigator.of(context).push(MaterialPageRoute(
-      builder: (BuildContext context) => PaypalCheckoutView(
-        sandboxMode: true,
-        clientId: "",
-        secretKey: "",
-        transactions: [
-          paymentEntity.toJson(),
-        ],
-        note: "Contact us for any questions on your order.",
-        onSuccess: (Map params) async {
-          print("onSuccess: $params");
-        },
-        onError: (error) {
-          print("onError: $error");
-          Navigator.pop(context);
-        },
-        onCancel: () {
-          print('cancelled:');
-        },
-      ),
-    ));
   }
 }
