@@ -8,10 +8,12 @@ part 'place_order_state.dart';
 class PlaceOrderCubit extends Cubit<PlaceOrderState> {
   PlaceOrderCubit(this.ordersRepo) : super(PlaceOrderInitial());
   final OrdersRepo ordersRepo;
-  void placeOrder({required OrderEntity order}) async {
+  Future<void> placeOrder({required OrderEntity order}) async {
     emit(PlaceOrderLoading());
     final result = await ordersRepo.placeOrder(order: order);
-    result.fold((failure) => emit(PlaceOrderFailure(failure.message)),
-        (success) => emit(PlaceOrderSuccess()));
+    result.fold(
+      (failure) => emit(PlaceOrderFailure(failure.message)),
+      (success) => emit(PlaceOrderSuccess()),
+    );
   }
 }

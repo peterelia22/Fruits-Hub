@@ -14,6 +14,7 @@ import 'package:fruits_hub/features/checkout/domain/entities/paypal_payment_enti
 import 'package:fruits_hub/features/checkout/presentation/manager/place_order_cubit/place_order_cubit.dart';
 import 'package:fruits_hub/features/checkout/presentation/views/widgets/checkout_steps.dart';
 
+import '../../../../../core/helper_functions/process_paymob_payment.dart';
 import 'checkout_steps_page_view.dart';
 
 class CheckoutViewBody extends StatefulWidget {
@@ -67,13 +68,29 @@ class _CheckoutViewBodyState extends State<CheckoutViewBody> {
             formKey: _formKey,
           )),
           CustomButton(
-              onPressed: () {
+              onPressed: () async {
                 if (currentPageIndex == 0) {
                   handleShippingSectionValidation(context);
                 } else if (currentPageIndex == 1) {
                   handleAddressValidation();
                 } else {
-                  processPayPalPayment(context);
+                  final orderEntity = context.read<OrderEntity>();
+                  if (orderEntity.payWithCash == true) {
+                    await context
+                        .read<PlaceOrderCubit>()
+                        .placeOrder(order: orderEntity);
+                  } else {
+                    final isSuccess = await processPaymobPayment(context);
+
+                    if (isSuccess) {
+                      await context
+                          .read<PlaceOrderCubit>()
+                          .placeOrder(order: orderEntity);
+                      buildErrorBar(context, 'تم الدفع بنجاح ');
+                    } else {
+                      buildErrorBar(context, 'فشل الدفع ');
+                    }
+                  }
                 }
               },
               text: getNextButtonText(currentPageIndex)),
@@ -101,7 +118,11 @@ class _CheckoutViewBodyState extends State<CheckoutViewBody> {
       case 1:
         return 'التالي';
       case 2:
-        return 'ادفع باستخدام باي بال';
+        if (context.read<OrderEntity>().payWithCash == true) {
+          return 'تأكيد الطلب';
+        } else {
+          return 'ادفع باستخدام باي بال';
+        }
       default:
         return 'التالي';
     }

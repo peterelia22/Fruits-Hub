@@ -29,7 +29,7 @@ class OrderModel {
 
   factory OrderModel.fromEntity(OrderEntity entity) {
     return OrderModel(
-      totalPrice: entity.cartEntity.calculateTotalPrice(),
+      totalPrice: entity.calcualteTotalOrderPriceAfterDiscountAndShipping(),
       uID: entity.uID,
       shippingAddressModel:
           ShippingAddressModel.fromEntity(entity.shippingAddress),
