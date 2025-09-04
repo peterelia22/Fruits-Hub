@@ -60,6 +60,24 @@ class _CheckoutViewBodyState extends State<CheckoutViewBody> {
           CheckoutSteps(
             pageController: pageController,
             currentPageIndex: currentPageIndex,
+            onTap: (index) {
+              if (currentPageIndex == 0) {
+                pageController.animateToPage(index,
+                    duration: const Duration(milliseconds: 300),
+                    curve: Curves.easeIn);
+              } else if (index == 1) {
+                var orderEntity = context.read<OrderEntity>();
+                if (orderEntity.payWithCash != null) {
+                  pageController.animateToPage(index,
+                      duration: const Duration(milliseconds: 300),
+                      curve: Curves.easeIn);
+                } else {
+                  buildErrorBar(context, 'يرجي تحديد طريقه الدفع');
+                }
+              } else {
+                handleAddressValidation();
+              }
+            },
           ),
           Expanded(
               child: CheckoutStepsPageView(

@@ -21,6 +21,8 @@ class OrderModel {
     return {
       'totalPrice': totalPrice,
       'uID': uID,
+      'status': 'pending',
+      'dateTime': DateTime.now().toString(),
       'shippingAddress': shippingAddressModel.toJson(),
       'orderProducts': orderProducts.map((e) => e.toJson()).toList(),
       'paymentMethod': paymentMethod
