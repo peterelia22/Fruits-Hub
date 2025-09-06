@@ -43,7 +43,8 @@ class OrderSummaryWidget extends StatelessWidget {
                   color: const Color(0xFF4E5556),
                 ),
               ),
-              Text('30جنية',
+              Text(
+                  '${context.read<OrderEntity>().calculateShippingCost()} جنيه',
                   textAlign: TextAlign.right,
                   style: TextStyles.semiBold13
                       .copyWith(color: const Color(0xFF4E5556)))
@@ -61,7 +62,7 @@ class OrderSummaryWidget extends StatelessWidget {
             children: [
               const Text('الكلي', style: TextStyles.bold16),
               Text(
-                  '${context.read<OrderEntity>().cartEntity.calculateTotalPrice() + 30} جنيه',
+                  '${context.read<OrderEntity>().calcualteTotalOrderPriceAfterDiscountAndShipping()} جنيه',
                   style: TextStyles.bold16)
             ],
           )

@@ -3,6 +3,7 @@ import 'dart:math';
 import 'package:fruits_hub/features/checkout/data/models/order_product_model.dart';
 import 'package:fruits_hub/features/checkout/data/models/shipping_address_model.dart';
 import 'package:fruits_hub/features/checkout/domain/entities/order_entity.dart';
+import 'package:uuid/uuid.dart';
 
 class OrderModel {
   final double totalPrice;
@@ -10,15 +11,17 @@ class OrderModel {
   final ShippingAddressModel shippingAddressModel;
   final List<OrderProductModel> orderProducts;
   final String paymentMethod;
-
+  final String orderId;
   OrderModel(
       {required this.totalPrice,
       required this.uID,
+      required this.orderId,
       required this.shippingAddressModel,
       required this.orderProducts,
       required this.paymentMethod});
   toJson() {
     return {
+      'orderId': orderId,
       'totalPrice': totalPrice,
       'uID': uID,
       'status': 'pending',
@@ -31,6 +34,7 @@ class OrderModel {
 
   factory OrderModel.fromEntity(OrderEntity entity) {
     return OrderModel(
+      orderId: const Uuid().v4(),
       totalPrice: entity.calcualteTotalOrderPriceAfterDiscountAndShipping(),
       uID: entity.uID,
       shippingAddressModel:
@@ -38,7 +42,7 @@ class OrderModel {
       orderProducts: entity.cartEntity.cartItems
           .map((e) => OrderProductModel.fromEntity(entity: e))
           .toList(),
-      paymentMethod: entity.payWithCash! ? 'Cash' : 'Paypal',
+      paymentMethod: entity.payWithCash! ? 'Cash' : 'Online',
     );
   }
 }

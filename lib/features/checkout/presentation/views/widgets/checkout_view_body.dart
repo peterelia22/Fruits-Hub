@@ -139,7 +139,7 @@ class _CheckoutViewBodyState extends State<CheckoutViewBody> {
         if (context.read<OrderEntity>().payWithCash == true) {
           return 'تأكيد الطلب';
         } else {
-          return 'ادفع باستخدام باي بال';
+          return 'الدفع الآن';
         }
       default:
         return 'التالي';
