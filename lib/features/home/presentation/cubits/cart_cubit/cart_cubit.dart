@@ -9,20 +9,41 @@ part 'cart_state.dart';
 
 class CartCubit extends Cubit<CartState> {
   CartCubit() : super(CartInitial());
+
   CartEntity cartEntity = CartEntity([]);
-  void addToCart(ProductsEntity productEntity) {
-    bool isProductExist = cartEntity.isExist(productEntity);
-    var cartItem = cartEntity.getCartItem(productEntity);
+
+  void addToCart(ProductsEntity productEntity,
+      {int quantity = 1, bool silent = false}) {
+    final updatedCart = CartEntity(List.from(cartEntity.cartItems));
+
+    bool isProductExist = updatedCart.isExist(productEntity);
+
     if (isProductExist) {
-      cartItem.increaseCount();
+      var cartItem = updatedCart.getCartItem(productEntity);
+      cartItem.quantity += quantity;
     } else {
-      cartEntity.addCartItem(cartItem);
+      final newCartItem = CartItemEntity(
+        productsEntity: productEntity,
+        quantity: quantity,
+      );
+      updatedCart.addCartItem(newCartItem);
     }
-    emit(CartItemAdded());
+
+    cartEntity = updatedCart;
+
+    if (silent) {
+      emit(CartUpdated());
+    } else {
+      emit(CartItemAdded());
+    }
   }
 
   void deleteCartItem(CartItemEntity cartItemEntity) {
-    cartEntity.deleteCartItem(cartItemEntity);
+    final updatedCart = CartEntity(List.from(cartEntity.cartItems));
+    updatedCart.deleteCartItem(cartItemEntity);
+
+    cartEntity = updatedCart;
+
     emit(CartItemRemoved());
   }
 }

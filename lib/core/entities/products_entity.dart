@@ -2,6 +2,7 @@ import 'dart:io';
 
 import 'package:equatable/equatable.dart';
 
+import '../../features/home/domain/entites/cart_item_entity.dart';
 import 'review_entity.dart';
 
 class ProductsEntity extends Equatable {
@@ -36,4 +37,7 @@ class ProductsEntity extends Equatable {
   @override
   // TODO: implement props
   List<Object?> get props => [code];
+  CartItemEntity toCartItemEntity() {
+    return CartItemEntity(productsEntity: this, quantity: 1);
+  }
 }

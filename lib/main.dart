@@ -6,6 +6,7 @@ import 'package:fruits_hub/core/services/custom_bloc_observer.dart';
 import 'package:fruits_hub/core/services/get_it_service.dart';
 import 'package:fruits_hub/core/services/shared_preferences_singleton.dart';
 import 'package:fruits_hub/core/utils/app_colors.dart';
+import 'package:fruits_hub/features/home/presentation/cubits/cart_cubit/cart_cubit.dart';
 import 'package:fruits_hub/features/splash/presentation/views/splash_view.dart';
 import 'package:fruits_hub/generated/l10n.dart';
 
@@ -21,7 +22,11 @@ void main() async {
 
   await SharedPreferencesSingleton.init();
   setupGetit();
-  runApp(const FruitsHub());
+  runApp(MultiBlocProvider(providers: [
+    BlocProvider(
+      create: (context) => CartCubit(),
+    ),
+  ], child: const FruitsHub()));
 }
 
 class FruitsHub extends StatelessWidget {

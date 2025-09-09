@@ -61,7 +61,7 @@ class _CheckoutViewBodyState extends State<CheckoutViewBody> {
             pageController: pageController,
             currentPageIndex: currentPageIndex,
             onTap: (index) {
-              if (currentPageIndex == 0) {
+              if (index == 0) {
                 pageController.animateToPage(index,
                     duration: const Duration(milliseconds: 300),
                     curve: Curves.easeIn);
